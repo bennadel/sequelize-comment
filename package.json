@@ -1,5 +1,5 @@
 {
-  "name": "sequelize_comment_plugin",
+  "name": "sequelize-comment",
   "version": "1.0.0",
   "description": "Adds the ability to include a SQL-comment before generated SQL statements (pulls from options.comment).",
   "repository": {
