@@ -120,6 +120,8 @@ dialect instance) and injecting methods that proxy the following SQL fragment ge
 As such, this plug-in isn't tied to specific set of methods; but, rather, any method that
 uses any of the above fragment generators.
 
+_**Read More**: [Experiment: Putting DEBUG Comments In Your Sequelize-Generated Queries In Node.js][4]_
+
 ## Tests
 
 You can run the tests using `npm run test`. The tests currently include an end-to-end 
@@ -130,3 +132,4 @@ shows up in the expected log items.
 [1]: http://www.bennadel.com
 [2]: https://plus.google.com/108976367067760160494?rel=author
 [3]: https://www.bennadel.com/blog/3058-putting-debug-comments-in-your-sql-statements-makes-debugging-performance-problems-easier.htm
+[4]: https://www.bennadel.com/blog/3265-experiment-putting-debug-comments-in-your-sequelize-generated-queries-in-node-js.htm
