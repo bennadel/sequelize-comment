@@ -35,36 +35,36 @@ Once applied, you can then pass a `comment` option with your basic CRUD queries:
 ```js
 // Example comment usage:
 Model.findAll(
-	{
-		where: {
-			typeID: 4
-		},
-		comment: "DEBUG: Running a SELECT command."
-	}
+    {
+        where: {
+            typeID: 4
+        },
+        comment: "DEBUG: Running a SELECT command."
+    }
 );
 
 // Example comment usage:
 Model.create(
-	{
-		id: 1, 
-		value: "Hello world"
-	},
-	{
-		comment: "DEBUG: Running an INSERT command."
-	}
+    {
+        id: 1, 
+        value: "Hello world"
+    },
+    {
+        comment: "DEBUG: Running an INSERT command."
+    }
 );
 
 // Example comment usage:
 Model.update(
-	{
-		value: "Good morning world"
-	},
-	{
-		where: {
-			value: "Hello world"
-		},
-		comment: "DEBUG: Running an UPDATE command."
-	}
+    {
+        value: "Good morning world"
+    },
+    {
+        where: {
+            value: "Hello world"
+        },
+        comment: "DEBUG: Running an UPDATE command."
+    }
 );
 ```
 
