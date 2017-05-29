@@ -89,6 +89,7 @@ the slow logs will have some indication as to where the originating file is loca
 
 This type of comment also allows `slow_log` queries and `general_log` queries to be more
 easily aggregated due to the concrete statement prefix.
+
 _**Read More**: [Putting DEBUG Comments In Your SQL Statements Makes Debugging Performance Problems Easier][3]_
 
 By default, the delimiter between the comment and the actual SQL command is a newline 
@@ -104,6 +105,27 @@ var sequelize = new Sequelize( /* configuration */ );
 // Disable the newline delimiter -- will use space instead.
 commentPlugin( sequelize, { newline: false } );
 ```
+
+## Technical Approach
+
+This plug-in works by grabbing the underlying QueryGenerator reference (of your Sequelize
+dialect instance) and injecting methods that proxy the following SQL fragment generators:
+
+* `selectQuery()`
+* `insertQuery()`
+* `updateQuery()`
+* `deleteQuery()`
+* `bulkInsertQuery()`
+
+As such, this plug-in isn't tied to specific set of methods; but, rather, any method that
+uses any of the above fragment generators.
+
+## Tests
+
+You can run the tests using `npm run test`. The tests currently include an end-to-end 
+test that requires a running database. The tests enable the `general_log`, run queries,
+and then inspect the `general_log` records in order to ensure that the `comment` value
+shows up in the expected log items.
 
 [1]: http://www.bennadel.com
 [2]: https://plus.google.com/108976367067760160494?rel=author
