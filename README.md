@@ -3,6 +3,8 @@
 
 by [Ben Nadel][1] (on [Google+][2])
 
+**Version: 1.0.1**
+
 This is a Sequelize instance plug-in that will prepend a SQL comment to the generated SQL
 statements based on the `{options.comment}` property. These comments do not affect the 
 execution of the SQL; but, they do provide critical debugging information for database 
