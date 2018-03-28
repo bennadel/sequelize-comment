@@ -1,6 +1,6 @@
 {
   "name": "sequelize-comment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds the ability to include a SQL-comment before generated SQL statements (pulls from options.comment).",
   "repository": {
     "type": "git",
