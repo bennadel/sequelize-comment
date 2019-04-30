@@ -4,6 +4,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     semi: ['error', 'always'],
-    'no-extra-semi': 'error'
+    'no-extra-semi': 'error',
+    'no-var': 'error',
+    'prefer-const': 'error'
   }
 };

@@ -1,13 +1,13 @@
 'use strict';
 
 // Require the core node modules.
-var assert = require('assert');
-var chalk = require('chalk');
-// var mysql = require('mysql');
-var Sequelize = require('sequelize');
+const assert = require('assert');
+const chalk = require('chalk');
+// const mysql = require('mysql');
+const Sequelize = require('sequelize');
 
 // Require the application modules.
-var commentPlugin = require('../');
+const commentPlugin = require('../');
 
 // ----------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------- //
@@ -27,7 +27,7 @@ console.log(chalk.red("> SET GLOBAL general_log = 'OFF';"));
 // ----------------------------------------------------------------------------------- //
 
 // Setup our Sequelize instance.
-var sequelize = new Sequelize(
+const sequelize = new Sequelize(
   process.env.DATABASE || 'testing',
   process.env.USERNAME || 'root',
   process.env.PASSWORD || '',
@@ -45,7 +45,7 @@ commentPlugin(sequelize, { newline: false });
 
 // Define the ORM (Object-Relational Mapping) model that we'll use for testing the SQL
 // commands.
-var ValueModel = sequelize.define(
+const ValueModel = sequelize.define(
   'ValueModel',
   {
     id: {
@@ -66,17 +66,17 @@ var ValueModel = sequelize.define(
   }
 );
 
-var queryGenerator = sequelize.getQueryInterface().QueryGenerator;
-var startedAt = new Date().toISOString();
+const queryGenerator = sequelize.getQueryInterface().QueryGenerator;
+const startedAt = new Date().toISOString();
 
 Promise.resolve()
   .then(function dropTestTable() {
-    var promise = queryGenerator.dropTableQuery(ValueModel.getTableName());
+    const promise = queryGenerator.dropTableQuery(ValueModel.getTableName());
 
     return promise;
   })
   .then(function createTestTable() {
-    var promise = sequelize.query(
+    const promise = sequelize.query(
       queryGenerator.createTableQuery(
         ValueModel.getTableName(),
         queryGenerator.attributesToSQL(ValueModel.rawAttributes),
@@ -87,14 +87,14 @@ Promise.resolve()
     return promise;
   })
   .then(function enableGeneralLog() {
-    var promise = sequelize.query(
+    const promise = sequelize.query(
       "SET GLOBAL general_log = 'ON'; SET GLOBAL log_output = 'TABLE';"
     );
 
     return promise;
   })
   .then(function runBulkCreate() {
-    var promise = ValueModel.bulkCreate(
+    const promise = ValueModel.bulkCreate(
       [
         {
           id: 1,
@@ -113,7 +113,7 @@ Promise.resolve()
     return promise;
   })
   .then(function runInsert() {
-    var promise = ValueModel.create(
+    const promise = ValueModel.create(
       {
         id: 3,
         value: 'Three'
@@ -126,7 +126,7 @@ Promise.resolve()
     return promise;
   })
   .then(function runUpdate() {
-    var promise = ValueModel.update(
+    const promise = ValueModel.update(
       {
         value: 'Three (updated)'
       },
@@ -141,7 +141,7 @@ Promise.resolve()
     return promise;
   })
   .then(function runDelete() {
-    var promise = ValueModel.destroy({
+    const promise = ValueModel.destroy({
       where: {
         id: 3
       },
@@ -151,7 +151,7 @@ Promise.resolve()
     return promise;
   })
   .then(function runSelect() {
-    var promise = ValueModel.findAll({
+    const promise = ValueModel.findAll({
       comment: 'SELECT'
     });
 
@@ -165,19 +165,19 @@ Promise.resolve()
     assert.ok(results[1].value === 'Two');
   })
   .then(function disableGeneralLog() {
-    var promise = sequelize.query("SET GLOBAL general_log = 'OFF';");
+    const promise = sequelize.query("SET GLOBAL general_log = 'OFF';");
 
     return promise;
   })
   .then(function dropTestTable() {
-    var promise = sequelize.query(
+    const promise = sequelize.query(
       queryGenerator.dropTableQuery(ValueModel.getTableName())
     );
 
     return promise;
   })
   .then(function getGeneralLogResults() {
-    var promise = sequelize.query(
+    const promise = sequelize.query(
       'SELECT * FROM mysql.general_log WHERE event_time >= ? AND argument LIKE ? ORDER BY event_time ASC',
       {
         replacements: [startedAt, '%' + ValueModel.getTableName() + '%'],
@@ -188,8 +188,8 @@ Promise.resolve()
     return promise;
   })
   .then(function assertGeneralLogResults(results) {
-    var records = results[0];
-    var offset = 0;
+    const records = results[0];
+    let offset = 0;
 
     console.log('Analyzing general_log....');
     assert.ok(
