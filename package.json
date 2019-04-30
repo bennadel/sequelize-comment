@@ -7,8 +7,11 @@
     "url": "https://github.com/bennadel/sequelize-comment.git"
   },
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
-    "test": "node test/e2e.js",
+    "test": "ava test.js",
     "format": "prettier --write \"**/*.js\"",
     "lint": "eslint \"**/*.js\""
   },
@@ -23,9 +26,9 @@
     "log"
   ],
   "author": "Ben Nadel",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "chalk": "^1.1.3",
+    "ava": "^1.4.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-standard": "^12.0.0",
@@ -34,8 +37,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "mysql": "^2.13.0",
     "prettier": "^1.17.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^5.8.1",
+    "sinon": "^7.3.2",
+    "sqlite3": "^4.0.6"
   }
 }
