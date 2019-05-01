@@ -30,14 +30,11 @@ const ValueModel = sequelize.define(
 
 test.before(async () => {
   await sequelize.authenticate();
-  const queryGenerator = sequelize.getQueryInterface().QueryGenerator;
-  await queryGenerator.dropTableQuery(ValueModel.getTableName());
-  return sequelize.query(
-    queryGenerator.createTableQuery(
-      ValueModel.getTableName(),
-      queryGenerator.attributesToSQL(ValueModel.rawAttributes),
-      {}
-    )
+  const queryInterface = sequelize.getQueryInterface();
+  await queryInterface.dropTable(ValueModel.getTableName());
+  return queryInterface.createTable(
+    ValueModel.getTableName(),
+    ValueModel.rawAttributes
   );
 });
 
