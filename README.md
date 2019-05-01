@@ -1,5 +1,7 @@
 # Sequelize Comment Plug-in
 
+[![build status](https://badgen.net/travis/bennadel/sequelize-comment/master)](https://travis-ci.com/bennadel/sequelize-comment) [![install size](https://badgen.net/packagephobia/install/sequelize-comment)](https://packagephobia.now.sh/result?p=sequelize-comment) [![npm package version](https://badgen.net/npm/v/sequelize-comment)](https://npm.im/sequelize-comment) [![npm license](https://badgen.net/npm/license/sequelize-comment)](https://github.com/bennadel/sequelize-comment/blob/master/LICENSE.md) [![js semistandard style](https://badgen.net/badge/code%20style/prettier/pink)](https://github.com/prettier/prettier)
+
 by [Ben Nadel][1] (on [Google+][2])
 
 **Version: 1.0.1**
