@@ -2,6 +2,20 @@
 
 const $plugin = Symbol(require('./package.json').name);
 
+/**
+ * Apply `CommentPlugin` to `Sequelize` connection factory
+ * @param {function(new: import('@types/sequelize').Sequelize)} Sequelize connection class
+ * @param {Object} [options={}] plugin options
+ * @param {boolean} [options.newline=false] use newline as comment and query delimiter
+ *
+ * @example
+ * const CommentPlugin = require('sequelize-comment');
+ * const Sequelize = require('sequelize');
+ *
+ * // Apply the plug-in to the Sequelize connection factory.
+ * CommentPlugin(Sequelize);
+ * const sequelize = new Sequelize(...);
+ */
 module.exports = (Sequelize, { newline = false } = {}) => {
   if (Sequelize[$plugin]) return;
   const delimiter = newline ? '\n' : ' ';
