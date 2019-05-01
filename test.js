@@ -44,6 +44,8 @@ test.before(async () => {
 const sandbox = sinon.createSandbox();
 
 test.beforeEach(async t => {
+  // NOTE: This is instance of `sqlite3.Database`:
+  //       https://github.com/mapbox/node-sqlite3/wiki/API#database
   const db = await sequelize.connectionManager.getConnection();
   t.context.db = db;
   sandbox.spy(db, 'run');
