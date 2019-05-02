@@ -27,6 +27,9 @@
   ],
   "author": "Ben Nadel",
   "license": "MIT",
+  "peerDependencies": {
+    "sequelize": ">=3.x"
+  },
   "devDependencies": {
     "ava": "^1.4.1",
     "eslint": "^5.16.0",
