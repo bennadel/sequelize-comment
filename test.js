@@ -62,7 +62,7 @@ test.serial('bulkCreate query accepts comment', async t => {
   sandbox.assert.pass = t.pass;
   sandbox.assert.calledWith(
     t.context.db.run,
-    `/* 'BULK CREATE' */ INSERT INTO \`__sequelize_comment_plugin_test__\` (\`id\`,\`value\`) VALUES (2,'Two');`
+    "/* BULK CREATE */ INSERT INTO `__sequelize_comment_plugin_test__` (`id`,`value`) VALUES (2,'Two');"
   );
 });
 
@@ -71,7 +71,7 @@ test.serial('insert query accepts comment', async t => {
   sandbox.assert.pass = t.pass;
   sandbox.assert.calledWith(
     t.context.db.run,
-    `/* 'INSERT' */ INSERT INTO \`__sequelize_comment_plugin_test__\` (\`id\`,\`value\`) VALUES ($1,$2);`
+    '/* INSERT */ INSERT INTO `__sequelize_comment_plugin_test__` (`id`,`value`) VALUES ($1,$2);'
   );
 });
 
@@ -83,7 +83,7 @@ test.serial('update query accepts comment', async t => {
   sandbox.assert.pass = t.pass;
   sandbox.assert.calledWith(
     t.context.db.run,
-    `/* 'UPDATE' */ UPDATE \`__sequelize_comment_plugin_test__\` SET \`value\`=$1 WHERE \`id\` = $2`
+    '/* UPDATE */ UPDATE `__sequelize_comment_plugin_test__` SET `value`=$1 WHERE `id` = $2'
   );
 });
 
@@ -92,7 +92,7 @@ test.serial('delete query accepts comment', async t => {
   sandbox.assert.pass = t.pass;
   sandbox.assert.calledWith(
     t.context.db.run,
-    `/* 'DELETE' */ DELETE FROM \`__sequelize_comment_plugin_test__\` WHERE \`id\` = 3`
+    '/* DELETE */ DELETE FROM `__sequelize_comment_plugin_test__` WHERE `id` = 3'
   );
 });
 
@@ -101,6 +101,6 @@ test.serial('select query accepts comment', async t => {
   sandbox.assert.pass = t.pass;
   sandbox.assert.calledWith(
     t.context.db.all,
-    `/* 'SELECT' */ SELECT \`id\`, \`value\` FROM \`__sequelize_comment_plugin_test__\` AS \`ValueModel\`;`
+    '/* SELECT */ SELECT `id`, `value` FROM `__sequelize_comment_plugin_test__` AS `ValueModel`;'
   );
 });

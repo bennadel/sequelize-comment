@@ -2,6 +2,8 @@
 
 const $plugin = Symbol(require('./package.json').name);
 
+const unquote = str => str.replace(/^'|'$/g, '');
+
 /**
  * Apply `CommentPlugin` to `Sequelize` connection factory
  * @param {function(new: import('@types/sequelize').Sequelize)} Sequelize connection class
@@ -22,7 +24,7 @@ module.exports = (Sequelize, { newline = false } = {}) => {
   const { query } = Sequelize.prototype;
   Sequelize.prototype.query = function(sql, { comment, ...options } = {}) {
     if (!comment) return query.call(this, sql, options);
-    comment = `/* ${escapeComment(this.escape(comment))} */`;
+    comment = `/* ${escapeComment(unquote(this.escape(comment)))} */`;
     if (typeof sql === 'object') {
       sql.query = [comment, sql.query].join(delimiter);
       return query.call(this, sql, options);
