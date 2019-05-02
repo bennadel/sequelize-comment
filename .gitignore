@@ -1,1 +1,16 @@
+# deps
 node_modules
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# editors
+.idea
+*.sublime-*
+.vscode/*
+!.vscode/settings.json
+
+# general
+.DS_Store
